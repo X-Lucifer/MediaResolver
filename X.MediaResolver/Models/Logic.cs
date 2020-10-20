@@ -300,7 +300,7 @@ namespace X.MediaResolver.Models
                 using (var client = new WebClient())
                 {
                     var bites = await client.DownloadDataTaskAsync(new Uri(url));
-                    using (var stream = new MemoryStream(bites))
+                    using (var stream = new MemoryStream())
                     {
                         await stream.WriteAsync(bites, 0, bites.Length);
                         image = Image.FromStream(stream, true);
